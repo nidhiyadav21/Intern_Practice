@@ -15,11 +15,11 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/",response_class=HTMLResponse)
-def show_login_form(request: Request):
+async def show_login_form(request: Request):
     return templates.TemplateResponse("form.html",{"request":request})
 
 @app.post("/login")
-def login(username: str = Form(...),password: str = Form(...)):
+async def login(username: str = Form(...),password: str = Form(...)):
     if username == VALID_USERNAME and password == VALID_PASSWORD:
         return {"message":"Login Successful"}
     else:
