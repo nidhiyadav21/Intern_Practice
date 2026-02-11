@@ -7,15 +7,15 @@ DATABASE_URL = (
         "?driver=ODBC+Driver+17+for+SQL+Server"
         "&trusted_connection=yes"
 )
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL, echo=False)
 SessionLocal = sessionmaker(autocommit=False, bind=engine)
 
 Base = declarative_base() #declarative class - This is a "parent" class
 
 # Dependency to get DB session
-def get_db():
-    db = SessionLocal()
+def get_db():              #This function is a Generator.This ensures every request gets its own fresh database connection.
+    db = SessionLocal()    #Opens a new session
     try:
-        yield db
+        yield db           #Provides the session to your API function
     finally:
         db.close()

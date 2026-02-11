@@ -6,7 +6,6 @@ import crud, schemas, models, database
 # # This creates the tables in the DB if they don't exist
 # models.Base.metadata.create_all(bind=database.engine)
 # # --------------------------
-
 app = FastAPI()
 
 @app.get("/employees", response_model=list[schemas.EmployeeResponse])
