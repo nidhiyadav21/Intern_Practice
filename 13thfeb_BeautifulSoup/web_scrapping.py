@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 
 #1. Fetch HTML
-
 def fetch_html(url):
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.get(url, headers=headers)
@@ -35,13 +34,15 @@ def main():
     url = "https://www.geeksforgeeks.org/web-scraping/introduction-to-web-scraping/"
     html = fetch_html(url)
     soup = BeautifulSoup(html, "html.parser")
+
     print("\n --- TITLE ---\n")
     print(extract_title(soup))
-    print("\n --- CONTENT ---\n")
 
+    print("\n --- CONTENT ---\n")
     content = extract_content(soup)
     for line in content[:20]:
         print(line)
+
     print("\n --- CODE ---\n")
     codes = extract_code(soup)
     for c in codes:

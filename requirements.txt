@@ -1,1 +1,12 @@
-Flask
+pandas (>=3.0.0,<4.0.0)
+flask (>=3.1.2,<4.0.0)
+fastapi (>=0.128.2,<0.129.0)
+pydantic[email] (>=2.12.5,<3.0.0)
+uvicorn (>=0.40.0,<0.41.0)
+python-multipart (>=0.0.22,<0.0.23)
+pyodbc (>=5.3.0,<6.0.0)
+sqlalchemy (>=2.0.46,<3.0.0)
+pymongo (>=4.16.0,<5.0.0)
+requests (>=2.32.5,<3.0.0)
+beautifulsoup4 (>=4.14.3,<5.0.0)
+
