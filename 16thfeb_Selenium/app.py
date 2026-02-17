@@ -1,9 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By   # that tells Selenium how to Search
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC #EC-Expected_Condition: defines what we are waiting for
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 import csv
@@ -16,7 +16,7 @@ from datetime import datetime
 BASE_URL = "https://www.scrapethissite.com/pages/forms/"
 CSV_FILENAME = "nhl_teams_selenium_all.csv"
 
-HEADLESS = True
+HEADLESS = True  # allows to switch between Debug mode(we see the browser)(False) and Production Mode(hidden)(True).
 PAGE_DELAY = 1.8  # polite delay between pages
 
 
@@ -93,10 +93,10 @@ def scrape_all_pages():
             page_teams = scrape_page(driver, wait, page_num)
 
             if not page_teams:
-                print(f"  Page {page_num}: No teams → stopping")
+                print(f" Page {page_num}: No teams → stopping")
                 break
 
-            all_teams.extend(page_teams)
+            all_teams.extend(page_teams) #takes all the individual items from the current page and adds them to the end of the master list.
             page_num += 1
             time.sleep(PAGE_DELAY)
 
@@ -114,7 +114,7 @@ def save_to_csv(teams: list[dict]):
 
     fieldnames = teams[0].keys()
 
-    with open(CSV_FILENAME, "w", newline="", encoding="utf-8") as f:
+    with open(CSV_FILENAME, "w", newline="", encoding="utf-8") as f: #encoding - ensures that special characters are saved correctly without turning into weird symbols
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(teams)
