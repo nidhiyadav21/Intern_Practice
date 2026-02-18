@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Query  #Depends - Used to inject the reusable Pagination logic.
-from app.core.database import transactions
+from app.core.database import transactions,audit_logs
 from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate
 from app.schemas.base_schema import APIResponse
 from app.dependencies.pagination import PaginationParams
@@ -17,8 +17,19 @@ async def create_transaction(data: TransactionCreate):
     doc = data.model_dump()
     doc["created_at"] = datetime.now(timezone.utc)
     doc["updated_at"] = datetime.now(timezone.utc)
+
     result = await transactions.insert_one(doc)
-    return APIResponse(success=True, message="Created", data={"id": str(result.inserted_id)})
+    transaction_id = str(result.inserted_id)
+
+    # 1. Log the Creation
+    await audit_logs.insert_one({
+        "action": "create_transaction",
+        "transaction_id": transaction_id,
+        "amount": doc["amount"],
+        "timestamp": datetime.now(timezone.utc)
+    })
+
+    return APIResponse(success=True, message="Created", data={"id": transaction_id})
 
 @router.get("/", response_model=APIResponse)
 async def list_transactions(
@@ -113,34 +124,70 @@ async def get_transaction(id: str):
         raise HTTPException(404, "Transaction not found")
     return APIResponse(success=True, message="Fetched", data=serialize(doc))
 
+
 @router.patch("/{id}", response_model=APIResponse)
 async def update_transaction(id: str, data: TransactionUpdate):
     update_data = {k: v for k, v in data.model_dump().items() if v is not None}
     update_data["updated_at"] = datetime.now(timezone.utc)
-    result = await transactions.update_one({"_id": ObjectId(id)}, {"$set": update_data})
-    if result.matched_count == 0:
-        raise HTTPException(404, "Transaction not found")
+
+    async with await transactions.database.client.start_session() as session:
+        async with session.start_transaction():
+            result = await transactions.update_one(
+                {"_id": ObjectId(id)},
+                {"$set": update_data},
+                session=session
+            )
+
+            if result.matched_count == 0:
+                raise HTTPException(404, "Transaction not found")
+
+            # 2. Log the Update
+            await audit_logs.insert_one({
+                "action": "update_transaction",
+                "transaction_id": id,
+                "changes": update_data,
+                "timestamp": datetime.now(timezone.utc)
+            }, session=session)
+
     return APIResponse(success=True, message="Updated")
 
+
 @router.delete("/bulk", response_model=APIResponse)
-async def bulk_delete(
-    category: str | None = None
-    # from_date: datetime | None = Query(None, alias="from"),
-    # to_date: datetime | None = Query(None, alias="to"),
-):
+async def bulk_delete(category: str | None = None):
     query = {}
     if category: query["category"] = category
-    # if from_date and to_date:
-    #     query["date"] = {"$gte": from_date, "$lte": to_date}
-    result = await transactions.delete_many(query)
+
+    async with await transactions.database.client.start_session() as session:
+        async with session.start_transaction():
+            result = await transactions.delete_many(query, session=session)
+
+            # 3. Log the Bulk Delete
+            await audit_logs.insert_one({
+                "action": "bulk_delete_transactions",
+                "filter": query,
+                "count": result.deleted_count,
+                "timestamp": datetime.now(timezone.utc)
+            }, session=session)
+
     return APIResponse(success=True, message="Bulk deleted", data={"count": result.deleted_count})
+
 
 @router.delete("/{id}", response_model=APIResponse)
 async def delete_transaction(id: str):
-    result = await transactions.delete_one({"_id": ObjectId(id)})
-    if result.deleted_count == 0:
-        raise HTTPException(404, "Transaction not found")
-    return APIResponse(success=True, message="Deleted")
+    async with await transactions.database.client.start_session() as session:
+        async with session.start_transaction():
+            result = await transactions.delete_one({"_id": ObjectId(id)}, session=session)
 
+            if result.deleted_count == 0:
+                raise HTTPException(404, "Transaction not found")
+
+            # 4. Log the Single Delete
+            await audit_logs.insert_one({
+                "action": "delete_transaction",
+                "transaction_id": id,
+                "timestamp": datetime.now(timezone.utc)
+            }, session=session)
+
+    return APIResponse(success=True, message="Deleted")
 
 
