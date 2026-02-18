@@ -1,14 +1,14 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query  #Depends - Used to inject the reusable Pagination logic.
 from app.core.database import transactions
 from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate
 from app.schemas.base_schema import APIResponse
 from app.dependencies.pagination import PaginationParams
-from bson import ObjectId
+from bson import ObjectId  #ObjectId: MongoDB IDs are special objects; we need this to convert the string ID from the URL into a format MongoDB understands.
 from datetime import datetime,timezone
 
 router = APIRouter(prefix="/transactions", tags=["Transactions"])
 
-def serialize(doc):
+def serialize(doc):     #A helper function that converts the MongoDB _id (an object) into a string so it can be sent as JSON.
     doc["_id"] = str(doc["_id"])
     return doc
 
@@ -56,41 +56,6 @@ async def search_transactions(q: str):
     cursor = transactions.find({"$text": {"$search": q}})
     results = [serialize(doc) async for doc in cursor]
     return APIResponse(success=True, message="Search results", data=results)
-
-# @router.get("/summary", response_model=APIResponse)
-# async def summary(month: str):
-#     try:
-#         year, month = map(int, month.split("-"))
-#     except ValueError:
-#         raise HTTPException(400, "Invalid month format.")
-#     pipeline = [
-#         {"$match": {
-#             "$expr": {
-#                 "$and": [
-#                     {"$eq": [{"$year": "$date"}, year]},
-#                     {"$eq": [{"$month": "$date"}, month]},
-#                 ]
-#             }
-#         }},
-#         {"$facet": {
-#             "totals": [
-#                 {"$group": {"_id": "$type", "total": {"$sum": "$amount"}}}
-#             ],
-#             "highest_expense": [
-#                 {"$match": {"type": "expense"}},
-#                 {"$sort": {"amount": -1}},
-#                 {"$limit": 1}
-#             ],
-#             "category_breakdown": [
-#                 {"$match": {"type": "expense"}},
-#                 {"$group": {"_id": "$category", "total": {"$sum": "$amount"}}}
-#             ]
-#         }}
-#     ]
-#
-#     result = await transactions.aggregate(pipeline).to_list(None)
-#     serialized_result = [serialize(doc) for doc in result]
-#     return APIResponse(success=True, message="Summary", data=serialized_result)
 
 
 @router.get("/summary", response_model=APIResponse)

@@ -1,16 +1,16 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException #HTTPException to send error responses (like 404 or 409) to the client.
 from app.core.database import categories, transactions, audit_logs
 from app.schemas.category_schema import CategoryCreate, CategoryUpdate
 from app.schemas.base_schema import APIResponse
-from datetime import datetime
+from datetime import datetime,timezone
 
-router = APIRouter(prefix="/categories", tags=["Categories"])
+router = APIRouter(prefix="/categories", tags=["Categories"]) #Initializes the router
 
 @router.post("/", response_model=APIResponse)
 async def create_category(data: CategoryCreate):
-    doc = data.model_dump()
+    doc = data.model_dump()       #Converts the Pydantic object into a standard Python dictionary so it can be saved in MongoDB.
     doc["name"] = doc["name"].lower()
-    doc["created_at"] = datetime.utcnow()
+    doc["created_at"] = datetime.now(timezone.utc)
     try:
         await categories.insert_one(doc)
     except:
@@ -21,7 +21,7 @@ async def create_category(data: CategoryCreate):
 async def list_categories():
     result = []
     async for doc in categories.find():
-        doc["_id"] = str(doc["_id"])
+        doc["_id"] = str(doc["_id"]) #Converts the MongoDB ObjectId to a string
         result.append(doc)
     return APIResponse(success=True, message="Fetched", data=result)
 
@@ -30,11 +30,17 @@ async def update_category(name: str, data: CategoryUpdate):
     result = await categories.update_one({"name": name}, {"$set": data.model_dump(exclude_none=True)})
     if result.matched_count == 0:
         raise HTTPException(404, "Category not found")
+
+
+
     return APIResponse(success=True, message="Updated")
+
+
+
 
 @router.delete("/{name}", response_model=APIResponse)
 async def delete_category(name: str):
-    async with await categories.database.client.start_session() as session:
+    async with await categories.database.client.start_session() as session:   #Starts a MongoDB session.
         async with session.start_transaction():
             category = await categories.find_one({"name": name})
             if not category:
@@ -48,7 +54,7 @@ async def delete_category(name: str):
             await audit_logs.insert_one({
                 "action": "delete_category",
                 "category": name,
-                "timestamp": datetime.utcnow(),
+                "timestamp": datetime.now(timezone.utc),
             })
 
     return APIResponse(success=True, message="Deleted transactionally")
