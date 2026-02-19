@@ -65,7 +65,7 @@ Client Receives JSON
 
 **Core Functionalities**
 
-📁 Category Management
+**Category Management**
 
 Create category
 
@@ -77,7 +77,7 @@ Delete category
 
 Duplicate prevention logic
 
-💳 Transaction Management
+**Transaction Management**
 
 Add income/expense transactions
 
