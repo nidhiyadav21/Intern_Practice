@@ -25,7 +25,7 @@ Clean and maintainable code
 
 Scalable structure for future enhancements
 
-⚡ Technical Highlights
+**Technical Highlights**
 
 Asynchronous API implementation using FastAPI
 
@@ -62,7 +62,8 @@ Response Serialization
       ↓
 Client Receives JSON
 
-📊 Core Functionalities
+**Core Functionalities**
+
 📁 Category Management
 
 Create category
