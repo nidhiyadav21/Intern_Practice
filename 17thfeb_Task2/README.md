@@ -49,12 +49,19 @@ Environment-based configuration management
 **Internal Request Flow**
 
 Client Request: The initial entry point where the user sends data.
+
 FastAPI Router: Receives and directs the request to the appropriate endpoint.
+
 Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
+
 Dependency Injection: Manages and provides required resources, such as database sessions.
+
 Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
+
 MongoDB Execution: The database performs the requested read or write operation.
+
 Response Serialization: Converts complex Python objects back into a standard format.
+
 Client Receives JSON: The final output is delivered to the user as a JSON payload.
 
 **Core Functionalities**
