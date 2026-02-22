@@ -26,7 +26,7 @@ Separation of concerns
 Clean and maintainable code
 
 Scalable structure for future enhancements
-
+---
 **Technical Highlights**
 
 Asynchronous API implementation using FastAPI
