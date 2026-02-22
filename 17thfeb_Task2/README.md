@@ -1,5 +1,4 @@
 <h1>Personal Finance Tracker API</h1>
----
  
  Project Overview:-
 
@@ -47,6 +46,7 @@ Query-based filtering (category & date range)
 Proper HTTP status codes & exception handling
 
 Environment-based configuration management
+---
 
 **Internal Request Flow**
 
@@ -65,8 +65,10 @@ MongoDB Execution: The database performs the requested read or write operation.
 Response Serialization: Converts complex Python objects back into a standard format.
 
 Client Receives JSON: The final output is delivered to the user as a JSON payload.
+---
 
 **Core Functionalities**
+---
 
 **Category Management**:-
 
@@ -79,7 +81,7 @@ Update category
 Delete category
 
 Duplicate prevention logic
-
+---
 **Transaction Management**:-
 
 Add income/expense transactions
