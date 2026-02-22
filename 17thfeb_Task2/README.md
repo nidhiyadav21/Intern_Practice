@@ -17,6 +17,7 @@ Schema Layer – Data validation using Pydantic models
 Core Layer – Configuration and database connection management
 
 Dependency Layer – Reusable dependencies like pagination
+---
 
 The design ensures:
 
