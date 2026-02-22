@@ -10,21 +10,21 @@ This project demonstrates backend development best practices including validatio
 ---
 The application follows a layered modular architecture:
 
-1)API Layer – Handles routing and HTTP request/response lifecycle
+1)API Layer – Handles routing and HTTP request/response lifecycle.
 
-2)Schema Layer – Data validation using Pydantic models
+2)Schema Layer – Data validation using Pydantic models.
 
-3)Core Layer – Configuration and database connection management
+3)Core Layer – Configuration and database connection management.
 
-4)Dependency Layer – Reusable dependencies like pagination
+4)Dependency Layer – Reusable dependencies like pagination.
 
 The design ensures:
 ---
-Separation of concerns
+-Separation of concerns.
 
-Clean and maintainable code
+-Clean and maintainable code.
 
-Scalable structure for future enhancements
+-Scalable structure for future enhancements.
 
 **Technical Highlights**
 ---
