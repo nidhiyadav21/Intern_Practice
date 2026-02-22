@@ -40,29 +40,29 @@ The design ensures:
 
 - Bulk delete operations with date filtering
 
-Query-based filtering (category & date range)
+- Query-based filtering (category & date range)
 
-Proper HTTP status codes & exception handling
+- Proper HTTP status codes & exception handling
 
-Environment-based configuration management
+- Environment-based configuration management
 
 **Internal Request Flow**
 ---
-Client Request: The initial entry point where the user sends data.
+ 1)Client Request: The initial entry point where the user sends data.
 
-FastAPI Router: Receives and directs the request to the appropriate endpoint.
+ 2)FastAPI Router: Receives and directs the request to the appropriate endpoint.
 
-Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
+ 3)Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
 
-Dependency Injection: Manages and provides required resources, such as database sessions.
+ 4)Dependency Injection: Manages and provides required resources, such as database sessions.
 
-Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
+ 5)Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
 
-MongoDB Execution: The database performs the requested read or write operation.
+ 6)MongoDB Execution: The database performs the requested read or write operation.
 
-Response Serialization: Converts complex Python objects back into a standard format.
+ 7)Response Serialization: Converts complex Python objects back into a standard format.
 
-Client Receives JSON: The final output is delivered to the user as a JSON payload.
+ 8)Client Receives JSON: The final output is delivered to the user as a JSON payload.
 
 **Core Functionalities**
 ---
