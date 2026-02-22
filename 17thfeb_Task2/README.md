@@ -1,11 +1,11 @@
-##**Personal Finance Tracker API**
-
+**Personal Finance Tracker API**
+---
  Project Overview:-
 
 Personal Finance Tracker is a scalable and modular REST API built using FastAPI and MongoDB to efficiently manage income and expense transactions.
 The system is designed with clean architecture principles, asynchronous database operations, structured validation, and real-world financial tracking features such as filtering, bulk operations, and monthly summaries.
 This project demonstrates backend development best practices including validation, dependency injection, async programming, and aggregation handling.
-
+---
 **Architecture & Design Approach**
 
 The application follows a layered modular architecture:
