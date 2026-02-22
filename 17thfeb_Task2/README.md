@@ -69,28 +69,28 @@ The design ensures:
 
 **Category Management**:-
 ---
-Create category
+- Create category
 
-View all categories
+- View all categories
 
-Update category
+- Update category
 
-Delete category
+- Delete category
 
-Duplicate prevention logic
+- Duplicate prevention logic
 
 **Transaction Management**:-
 ---
-Add income/expense transactions
+- Add income/expense transactions
 
-Update transaction details
+- Update transaction details
 
-Delete single transaction
+- Delete single transaction
 
-Bulk delete by date range
+- Bulk delete by date range
 
-Filter by category
+- Filter by category
 
-Filter by date range
+- Filter by date range
 
-Monthly financial summary (Aggregation pipeline)
+- Monthly financial summary (Aggregation pipeline)
