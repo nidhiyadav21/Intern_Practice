@@ -20,25 +20,25 @@ The application follows a layered modular architecture:
 
 The design ensures:
 ---
--Separation of concerns.
+- Separation of concerns.
 
--Clean and maintainable code.
+- Clean and maintainable code.
 
--Scalable structure for future enhancements.
+- Scalable structure for future enhancements.
 
 **Technical Highlights**
 ---
-Asynchronous API implementation using FastAPI
+- Asynchronous API implementation using FastAPI
 
-Async MongoDB integration via Motor
+- Async MongoDB integration via Motor
 
-Structured request validation using Pydantic
+- Structured request validation using Pydantic
 
-Dependency Injection for database handling
+- Dependency Injection for database handling
 
-MongoDB aggregation for financial summary
+- MongoDB aggregation for financial summary
 
-Bulk delete operations with date filtering
+- Bulk delete operations with date filtering
 
 Query-based filtering (category & date range)
 
