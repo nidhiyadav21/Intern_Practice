@@ -17,18 +17,17 @@ Schema Layer – Data validation using Pydantic models
 Core Layer – Configuration and database connection management
 
 Dependency Layer – Reusable dependencies like pagination
----
 
 The design ensures:
-
+---
 Separation of concerns
 
 Clean and maintainable code
 
 Scalable structure for future enhancements
----
-**Technical Highlights**
 
+**Technical Highlights**
+---
 Asynchronous API implementation using FastAPI
 
 Async MongoDB integration via Motor
@@ -46,10 +45,9 @@ Query-based filtering (category & date range)
 Proper HTTP status codes & exception handling
 
 Environment-based configuration management
----
 
 **Internal Request Flow**
-
+---
 Client Request: The initial entry point where the user sends data.
 
 FastAPI Router: Receives and directs the request to the appropriate endpoint.
@@ -65,7 +63,6 @@ MongoDB Execution: The database performs the requested read or write operation.
 Response Serialization: Converts complex Python objects back into a standard format.
 
 Client Receives JSON: The final output is delivered to the user as a JSON payload.
----
 
 **Core Functionalities**
 ---
