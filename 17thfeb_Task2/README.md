@@ -71,7 +71,7 @@ Client Receives JSON: The final output is delivered to the user as a JSON payloa
 ---
 
 **Category Management**:-
-
+---
 Create category
 
 View all categories
@@ -81,9 +81,9 @@ Update category
 Delete category
 
 Duplicate prevention logic
----
-**Transaction Management**:-
 
+**Transaction Management**:-
+---
 Add income/expense transactions
 
 Update transaction details
