@@ -1,5 +1,5 @@
-**Personal Finance Tracker API**
-
+<h1>Personal Finance Tracker API</h1>
+ 
  Project Overview:-
 
 Personal Finance Tracker is a scalable and modular REST API built using FastAPI and MongoDB to efficiently manage income and expense transactions.
@@ -7,89 +7,90 @@ The system is designed with clean architecture principles, asynchronous database
 This project demonstrates backend development best practices including validation, dependency injection, async programming, and aggregation handling.
 
 **Architecture & Design Approach**
-
+---
 The application follows a layered modular architecture:
 
-API Layer – Handles routing and HTTP request/response lifecycle
+1)API Layer – Handles routing and HTTP request/response lifecycle.
 
-Schema Layer – Data validation using Pydantic models
+2)Schema Layer – Data validation using Pydantic models.
 
-Core Layer – Configuration and database connection management
+3)Core Layer – Configuration and database connection management.
 
-Dependency Layer – Reusable dependencies like pagination
+4)Dependency Layer – Reusable dependencies like pagination.
 
 The design ensures:
+---
+- Separation of concerns.
 
-Separation of concerns
+- Clean and maintainable code.
 
-Clean and maintainable code
-
-Scalable structure for future enhancements
+- Scalable structure for future enhancements.
 
 **Technical Highlights**
+---
+- Asynchronous API implementation using FastAPI
 
-Asynchronous API implementation using FastAPI
+- Async MongoDB integration via Motor
 
-Async MongoDB integration via Motor
+- Structured request validation using Pydantic
 
-Structured request validation using Pydantic
+- Dependency Injection for database handling
 
-Dependency Injection for database handling
+- MongoDB aggregation for financial summary
 
-MongoDB aggregation for financial summary
+- Bulk delete operations with date filtering
 
-Bulk delete operations with date filtering
+- Query-based filtering (category & date range)
 
-Query-based filtering (category & date range)
+- Proper HTTP status codes & exception handling
 
-Proper HTTP status codes & exception handling
-
-Environment-based configuration management
+- Environment-based configuration management
 
 **Internal Request Flow**
+---
+ 1)Client Request: The initial entry point where the user sends data.
 
-Client Request: The initial entry point where the user sends data.
+ 2)FastAPI Router: Receives and directs the request to the appropriate endpoint.
 
-FastAPI Router: Receives and directs the request to the appropriate endpoint.
+ 3)Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
 
-Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
+ 4)Dependency Injection: Manages and provides required resources, such as database sessions.
 
-Dependency Injection: Manages and provides required resources, such as database sessions.
+ 5)Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
 
-Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
+ 6)MongoDB Execution: The database performs the requested read or write operation.
 
-MongoDB Execution: The database performs the requested read or write operation.
+ 7)Response Serialization: Converts complex Python objects back into a standard format.
 
-Response Serialization: Converts complex Python objects back into a standard format.
-
-Client Receives JSON: The final output is delivered to the user as a JSON payload.
+ 8)Client Receives JSON: The final output is delivered to the user as a JSON payload.
 
 **Core Functionalities**
+---
 
 **Category Management**:-
+---
+- Create category
 
-Create category
+- View all categories
 
-View all categories
+- Update category
 
-Update category
+- Delete category
 
-Delete category
-
-Duplicate prevention logic
+- Duplicate prevention logic
 
 **Transaction Management**:-
+---
+- Add income/expense transactions
 
-Add income/expense transactions
+- Update transaction details
 
-Update transaction details
+- Delete single transaction
 
-Delete single transaction
+- Bulk delete by date range
 
-Bulk delete by date range
+- Filter by category
 
-Filter by category
+- Filter by date range
 
-Filter by date range
-
-Monthly financial summary (Aggregation pipeline)
+- Monthly financial summary (Aggregation pipeline)
