@@ -80,7 +80,7 @@ Y = df["charges"]
 
 
 #Splitting the dataset
-X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3,random_state=42)
+X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3,random_state=42) #  random_state-fix the randomness
 # X_train.shape,y_train.shape,X_test.shape,y_test.shape
 
 
