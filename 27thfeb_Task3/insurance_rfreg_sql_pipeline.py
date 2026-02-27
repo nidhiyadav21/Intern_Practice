@@ -9,6 +9,7 @@ from sklearn.compose import make_column_transformer,make_column_selector
 from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
+from sklearn import tree
 
 
 #Main Class
@@ -153,6 +154,29 @@ class InsuranceSQLModel:
 
         print(f"Successfully updated '{self.table_name}'. Extra columns have been removed.")
 
+    def plot_individual_tree(self, tree_index=0, max_depth=3):
+        print(f"Visualizing Tree #{tree_index} from the Forest...")
+
+        # 1. Get the feature names after OneHotEncoding
+        # This ensures the tree labels show 'sex_male' instead of just 'x1_male'
+        preprocessor = self.pipeline.named_steps['columntransformer']
+        feature_names = preprocessor.get_feature_names_out()
+
+        # 2. Get the specific tree from the RandomForest
+        rf_model = self.pipeline.named_steps['randomforestregressor']
+        single_tree = rf_model.estimators_[tree_index]
+
+        # 3. Plot
+        plt.figure(figsize=(25, 12))
+        tree.plot_tree(single_tree,
+                       feature_names=feature_names,
+                       filled=True,
+                       rounded=True,
+                       fontsize=10,
+                       max_depth=max_depth)
+
+        plt.title(f"Decision Tree #{tree_index} (Max Depth: {max_depth})")
+        plt.show()
 
 
 def main():
@@ -165,6 +189,7 @@ def main():
     model.train()
     model.evaluate()
     model.save_to_existing_table()
+    model.plot_individual_tree()
 
 
 
