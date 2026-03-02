@@ -148,32 +148,34 @@ Category-wise expense breakdown with percentage
 Highest expense transaction
 
 🔎 Filtering & Pagination
+```
 GET /transactions?category=Food&type=expense&from=2024-06-01&to=2024-06-30&page=1&page_size=20&sort_by=date&order=desc
+```
 
 Supported Query Parameters
 
-category → Filter by category
+```category``` → Filter by category
 
-type → income / expense
+```type``` → income / expense
 
-from → Start date
+```from ```→ Start date
 
-to → End date
+```to ```→ End date
 
-tags → Must contain all given tags
+```tags``` → Must contain all given tags
 
-page → Page number (default: 1)
+```page``` → Page number (default: 1)
 
-page_size → Max 100 (default: 20)
+```page_size``` → Max 100 (default: 20)
 
-sort_by → date or amount
+```sort_by``` → date or amount
 
-order → asc / desc
+```order``` → asc / desc
 
 Pagination implemented using reusable PaginationParams dependency.
 
 ✅ Validation Rules (Pydantic v2)
-
+```
 amount → Must be greater than 0
 
 title → 3–100 characters, trimmed
@@ -191,9 +193,9 @@ tags → Maximum 10 tags, each max 30 characters
 page_size → Maximum value 100
 
 Separate request and response schemas are maintained.
-
+```
 ⚠ Error Handling
-
+```
 Centralized exception handling
 
 Consistent JSON response structure
@@ -203,10 +205,15 @@ Proper HTTP status codes
 Custom validation messages
 
 MongoDB transaction rollback on failure
-
-
-
-
+```
+Example Error Response
+```json
+{
+  "success": false,
+  "error": "Category not found",
+  "status_code": 404
+}
+```
 
 
 
