@@ -16,7 +16,7 @@ The application follows a structured multi-module architecture with proper schem
 - **Validation:** Pydantic v2  
 - **ODM/Schema Handling:** Native Pydantic + Motor  
 - **Version Control:** Git  
-- **API Testing:** Postman  
+- **API Testing:** Swagger UI  
 
 ---
 
