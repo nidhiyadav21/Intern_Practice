@@ -1,5 +1,94 @@
 # 💰 Personal Finance Tracker API
 
+A production-ready **Personal Finance Tracker API** built using **FastAPI** and **MongoDB (Motor)**.
+
+This API allows users to manage income and expense transactions, categorize them, perform advanced filtering, generate monthly summaries using aggregation pipelines, and execute transactional operations with MongoDB.
+
+The application follows a structured multi-module architecture with proper schema separation, validation, indexing, error handling, and reusable dependencies.
+
+---
+
+## 🚀 Tech Stack
+
+- **Backend Framework:** FastAPI  
+- **Database:** MongoDB  
+- **Async Driver:** Motor  
+- **Validation:** Pydantic v2  
+- **ODM/Schema Handling:** Native Pydantic + Motor  
+- **Version Control:** Git  
+- **API Testing:** Postman  
+
+---
+
+# 📁 Project Structure
+app/
+│
+├── main.py
+├── core/
+│ ├── config.py
+│ └── database.py
+│
+├── models/
+│ ├── transaction_models.py
+│ └── category_models.py
+│
+├── schemas/
+│ ├── transaction_schema.py
+│ └── category_schema.py
+│
+├── routes/
+│ ├── transactions.py
+│ └── categories.py
+│
+├── dependencies/
+│ └── pagination.py
+│
+└── utils/
+└── exceptions.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 💰 Personal Finance Tracker API
+
 A production-ready Personal Finance Tracker API built using **FastAPI** and **MongoDB (Motor)**.
 
 This API allows users to manage income and expense transactions, categorize them, perform advanced filtering, generate monthly summaries using aggregation pipelines, and execute transactional operations with MongoDB.
