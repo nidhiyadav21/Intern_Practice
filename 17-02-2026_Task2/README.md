@@ -22,31 +22,15 @@ The application follows a structured multi-module architecture with proper schem
 
 # 📁 Project Structure
 
-
 app/
 │
 ├── main.py
 ├── core/
-│ ├── config.py
-│ └── database.py
-│
 ├── models/
-│ ├── transaction_models.py
-│ └── category_models.py
-│
 ├── schemas/
-│ ├── transaction_schema.py
-│ └── category_schema.py
-│
 ├── routes/
-│ ├── transactions.py
-│ └── categories.py
-│
 ├── dependencies/
-│ └── pagination.py
-│
 └── utils/
-└── exceptions.py
 
 
 # 🗄 Database Design
