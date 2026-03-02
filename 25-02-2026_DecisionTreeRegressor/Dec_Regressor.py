@@ -28,7 +28,7 @@ class HousePriceModel:
       self.file_path = file_path
       self.test_size = test_size
       self.random_state = random_state
-      self.model = DecisionTreeRegressor(max_depth=10,random_state=42)
+      #self.model = DecisionTreeRegressor(max_depth=10,random_state=42)
 
       #Data containers
       self.df = None

@@ -27,6 +27,7 @@ class InsuranceRFModel:
 
 
     def load_data(self):
+
         print("Loading data...")
         self.df = pd.read_csv(self.file_path)
         print(f"Data loaded: {self.df.shape}")
