@@ -50,7 +50,7 @@ app/
 
 ---
 
-# 🗄 Database Design
+#  Database Design
 
 ## Collections
 
@@ -93,7 +93,7 @@ Used to log transactional operations when deleting categories.
 | `{ title: "text", description: "text" }` | transactions | Text         | Full-text search             |
 | `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
 ```
-Features Implemented
+#Features Implemented
 
  **Transactions**
 ```
@@ -132,7 +132,7 @@ Features Implemented
 - Rolls back on failure
 ```
 
-📊 Monthly Summary (Aggregation Pipeline)
+**Monthly Summary (Aggregation Pipeline)**
 ```
 GET /transactions/summary?month=2024-06
 ```
@@ -148,7 +148,7 @@ Returns:
 
 - Highest expense transaction
 
- Filtering & Pagination
+ **Filtering & Pagination**
 ```
 GET /transactions?category=Food&type=expense&from=2024-06-01&to=2024-06-30&page=1&page_size=20&sort_by=date&order=desc
 ```
@@ -195,7 +195,7 @@ Pagination implemented using reusable PaginationParams dependency.
 
 - Separate request and response schemas are maintained.
 ```
-Error Handling
+**Error Handling**
 ```
 - Centralized exception handling
 
@@ -207,7 +207,7 @@ Error Handling
 
 - MongoDB transaction rollback on failure
 ```
-Example Error Response
+**Example Error Response**
 ```json
 {
   "success": false,
@@ -215,7 +215,7 @@ Example Error Response
   "status_code": 404
 }
 ```
- Running the Application
+ **Running the Application**
 
 Install dependencies
 ```
@@ -230,7 +230,7 @@ Swagger Documentation
 http://localhost:8000/docs
 ```
 
- Design Decisions
+ **Design Decisions**
 ```
 - Category stored as string for optimized filtering and indexing
 
@@ -244,7 +244,7 @@ http://localhost:8000/docs
 
 - Strict schema separation improves API clarity
 ```
- Conclusion
+ **Conclusion**
 ```
 This project demonstrates:
 
