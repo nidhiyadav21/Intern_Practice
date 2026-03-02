@@ -1,2 +1,0 @@
-# config.py: Stores environment variables (like your MongoDB URI or secret keys).
-# database.py: Handles the connection to your MongoDB instance so you can import the db or transactions collection elsewhere.
