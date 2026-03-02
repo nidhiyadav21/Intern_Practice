@@ -69,6 +69,9 @@ app/
   "updated_at": "datetime"
 }
 ```
+2️⃣ categories
+
+```json
 {
   "_id": "ObjectId",
   "name": "string (unique)",
@@ -77,7 +80,7 @@ app/
   "created_at": "datetime"
 }
 ```
-3️. audit_logs
+3️⃣ audit_logs
 
 Used to log transactional operations when deleting categories.
 ```
@@ -88,10 +91,115 @@ Used to log transactional operations when deleting categories.
 | `{ type: 1, date: -1 }`                  | transactions | Compound     | Filter by type + sort        |
 | `{ title: "text", description: "text" }` | transactions | Text         | Full-text search             |
 | `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
+```
+🔍 Features Implemented
+✅ Transactions
+
+Create transaction
+
+Get transaction by ID
+
+Update transaction (partial update)
+
+Delete transaction
+
+Bulk delete (category/date range)
+
+Advanced filtering with pagination
+
+Full-text search
+
+Monthly summary report (aggregation pipeline)
+
+✅ Categories
+
+Create category
+
+List categories
+
+Update category
+
+Delete category (MongoDB Transaction)
+
+Deletes category
+
+Sets linked transactions to "uncategorized"
+
+Logs operation in audit_logs
+
+Rolls back on failure
 
 
+📊 Monthly Summary (Aggregation Pipeline)
+GET /transactions/summary?month=2024-06
+Returns:
 
+Total income
 
+Total expense
+
+Net balance
+
+Category-wise expense breakdown with percentage
+
+Highest expense transaction
+
+🔎 Filtering & Pagination
+GET /transactions?category=Food&type=expense&from=2024-06-01&to=2024-06-30&page=1&page_size=20&sort_by=date&order=desc
+
+Supported Query Parameters
+
+category → Filter by category
+
+type → income / expense
+
+from → Start date
+
+to → End date
+
+tags → Must contain all given tags
+
+page → Page number (default: 1)
+
+page_size → Max 100 (default: 20)
+
+sort_by → date or amount
+
+order → asc / desc
+
+Pagination implemented using reusable PaginationParams dependency.
+
+✅ Validation Rules (Pydantic v2)
+
+amount → Must be greater than 0
+
+title → 3–100 characters, trimmed
+
+description → Maximum 500 characters
+
+type → Must be exactly "income" or "expense"
+
+category → Lowercase, not empty
+
+date → Cannot be a future date
+
+tags → Maximum 10 tags, each max 30 characters
+
+page_size → Maximum value 100
+
+Separate request and response schemas are maintained.
+
+⚠ Error Handling
+
+Centralized exception handling
+
+Consistent JSON response structure
+
+Proper HTTP status codes
+
+Custom validation messages
+
+MongoDB transaction rollback on failure
 
 
 
