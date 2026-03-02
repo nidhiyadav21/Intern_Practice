@@ -81,6 +81,15 @@ app/
 
 Used to log transactional operations when deleting categories.
 
+| Index                                    | Collection   | Type         | Purpose                      |
+| ---------------------------------------- | ------------ | ------------ | ---------------------------- |
+| `{ date: -1 }`                           | transactions | Single Field | Chronological listing        |
+| `{ category: 1, date: -1 }`              | transactions | Compound     | Filter by category + sort    |
+| `{ type: 1, date: -1 }`                  | transactions | Compound     | Filter by type + sort        |
+| `{ title: "text", description: "text" }` | transactions | Text         | Full-text search             |
+| `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
+
+
 
 
 
