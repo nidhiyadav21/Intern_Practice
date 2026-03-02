@@ -52,7 +52,9 @@ app/
  "created_at": "datetime",
  "updated_at": "datetime"
 }
+
 2️⃣ categories
+
 {
  "_id": "ObjectId",
  "name": "string (unique)",
@@ -60,6 +62,7 @@ app/
  "description": "string",
  "created_at": "datetime"
 }
+
 3️⃣ audit_logs
 
 Used to log transactional operations when deleting categories.
