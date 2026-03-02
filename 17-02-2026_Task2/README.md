@@ -93,6 +93,7 @@ Used to log transactional operations when deleting categories.
 | `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
 ```
 🔍 Features Implemented
+```
 ✅ Transactions
 
 Create transaction
@@ -110,9 +111,9 @@ Advanced filtering with pagination
 Full-text search
 
 Monthly summary report (aggregation pipeline)
-
+```
 ✅ Categories
-
+```
 Create category
 
 List categories
@@ -128,10 +129,12 @@ Sets linked transactions to "uncategorized"
 Logs operation in audit_logs
 
 Rolls back on failure
-
+```
 
 📊 Monthly Summary (Aggregation Pipeline)
+```
 GET /transactions/summary?month=2024-06
+```
 Returns:
 
 Total income
