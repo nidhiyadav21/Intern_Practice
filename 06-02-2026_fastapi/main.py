@@ -37,7 +37,7 @@ async def update_tasks(task_id: int, updated_tasks: Task):
     for index, task in enumerate(db):
         if task["id"] == task_id:
             updated_tasks.id = task_id
-            db[index] = updated_tasks.dict()   # ✅ convert to dict
+            db[index] = updated_tasks.dict()   #convert to dict
             return {"message": "Task Updated!", "data": db[index]}
     raise HTTPException(status_code=404, detail="Task not found")
 
