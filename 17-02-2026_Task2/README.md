@@ -93,7 +93,7 @@ Used to log transactional operations when deleting categories.
 | `{ title: "text", description: "text" }` | transactions | Text         | Full-text search             |
 | `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
 ```
-#Features Implemented
+# Features Implemented
 
  **Transactions**
 ```
@@ -175,7 +175,7 @@ Supported Query Parameters
 
 Pagination implemented using reusable PaginationParams dependency.
 
- Validation Rules (Pydantic v2)
+ # Validation Rules (Pydantic v2)
 ```
 - amount → Must be greater than 0
 
@@ -215,7 +215,7 @@ Pagination implemented using reusable PaginationParams dependency.
   "status_code": 404
 }
 ```
- **Running the Application**
+ # Running the Application
 
 Install dependencies
 ```
@@ -230,7 +230,7 @@ Swagger Documentation
 http://localhost:8000/docs
 ```
 
- **Design Decisions**
+ # Design Decisions
 ```
 - Category stored as string for optimized filtering and indexing
 
@@ -244,7 +244,7 @@ http://localhost:8000/docs
 
 - Strict schema separation improves API clarity
 ```
- **Conclusion**
+ # Conclusion
 ```
 This project demonstrates:
 
