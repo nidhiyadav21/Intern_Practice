@@ -46,7 +46,6 @@ app/
 └── utils/
 └── exceptions.py
 
----
 
 # 🗄 Database Design
 
