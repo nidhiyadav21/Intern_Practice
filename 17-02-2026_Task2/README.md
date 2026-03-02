@@ -215,6 +215,7 @@ Example Error Response
 }
 ```
 ▶ Running the Application
+
 Install dependencies
 ```
 pip install -r requirements.txt
@@ -259,6 +260,7 @@ This project demonstrates:
 - Production-level error handling
 ```
 Developed by Nidhi Yadav
+
 Internship Backend Project – FastAPI & MongoDB
 
 
