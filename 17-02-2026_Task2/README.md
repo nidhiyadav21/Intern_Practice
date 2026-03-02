@@ -47,6 +47,56 @@ app/
 └── exceptions.py
 
 
+---
+
+# 🗄 Database Design
+
+## Collections
+
+### 1️⃣ transactions
+
+```json
+{
+  "_id": "ObjectId",
+  "title": "string",
+  "description": "string",
+  "amount": "float",
+  "type": "income | expense",
+  "category": "string",
+  "date": "datetime",
+  "tags": ["string"],
+  "created_at": "datetime",
+  "updated_at": "datetime"
+}
+
+{
+  "_id": "ObjectId",
+  "name": "string (unique)",
+  "type": "income | expense | both",
+  "description": "string",
+  "created_at": "datetime"
+}
+
+3️⃣ audit_logs
+
+Used to log transactional operations when deleting categories.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
