@@ -22,6 +22,7 @@ The application follows a structured multi-module architecture with proper schem
 
 # 📁 Project Structure
 
+
 app/
 │
 ├── main.py
