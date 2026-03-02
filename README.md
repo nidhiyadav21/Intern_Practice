@@ -1,83 +1,71 @@
-🚀 Internship Learning Repository
+# 🚀 Internship Practice Repository
 
-Welcome to my Internship Learning Repository!
-This repository is a structured record of my daily progress, technical exploration, and hands-on implementation throughout my internship period.
+Welcome to my Internship Practice Repository!
 
-🎯 Objective
+This repository serves as a structured log of my daily learning, development tasks, and technical growth throughout my internship journey. It reflects my consistency, problem-solving approach, and hands-on experience with real-world implementations.
 
-The main objective of this repository is to:
+---
 
-Maintain daily consistency in coding and development
+## 🎯 Objective
 
-Track my problem-solving approach
+The primary goals of this repository are:
 
-Document concepts, debugging experiences, and feature implementations
+- Maintain a daily coding streak
+- Document concepts learned and tasks completed
+- Track bugs faced and solutions implemented
+- Create a searchable reference for future learning
+- Showcase professional growth during internship
 
-Create a well-organized reference for future revision
+---
 
-It reflects both my technical growth and practical exposure during the internship.
+## 📁 Folder Structure
 
-📁 Directory Structure
-
-Each directory is organized using the format:
+Each folder follows a consistent naming convention:
 
 DDMMYYYY_DayName
 
-This helps in maintaining chronological order and easy navigation.
+This format keeps all logs chronological and easy to navigate.
 
-Example:
+### Example:
 
-13022026_Friday/ → Tasks and learning completed on 13 Feb 2026
-
-12022026_Thursday/ → Work done on 12 Feb 2026
+13022026_Friday/  
+12022026_Thursday/
 
 Each folder may contain:
+- Source code files
+- Implementation tasks
+- Notes and explanations
+- Screenshots (if required)
 
-Source code files
+---
 
-Notes or explanations
+## 🛠 Tech Stack & Tools
 
-Screenshots (if required)
+### 💻 Programming Languages
+- Python
+- SQL
 
-Task descriptions
+### ⚙ Frameworks & Libraries
+- Flask
+- FastAPI
+- SQLAlchemy
+- PyMongo
+- Scikit-learn
+- PyODBC
+- GitFlow
 
-🛠 Technologies & Tools
+### 🔧 Tools
+- Git & GitHub
+- Postman
+- VS Code
 
-Below are the primary technologies I am working with during my internship:
+---
 
-💻 Programming Languages
+## 📌 Commitment
 
-Python
+This repository represents my dedication to continuous learning, structured documentation, and consistent improvement during my internship.
 
-SQL
+---
 
-⚙ Frameworks & Libraries
-
-Flask
-
-FastAPI
-
-SQLAlchemy
-
-PyMongo
-
-Scikit-learn
-
-PyODBC
-
-GitFlow
-
-🔧 Development Tools
-
-Git & GitHub
-
-Postman
-
-VS Code
-
-📌 Commitment
-
-This repository represents my dedication to continuous learning, structured documentation, and professional development.
-
-👩‍💻 Maintained by Nidhi Yadav
-Feel free to explore the repository and connect regarding any implementation or concept!
+👩‍💻 Maintained by Nidhi Yadav  
+Feel free to explore and reach out regarding any implementation or concept.
