@@ -93,10 +93,10 @@ Used to log transactional operations when deleting categories.
 | `{ title: "text", description: "text" }` | transactions | Text         | Full-text search             |
 | `{ name: 1 }`                            | categories   | Unique       | Prevent duplicate categories |
 ```
-🔍 Features Implemented
-```
-✅ Transactions
+Features Implemented
 
+ **Transactions**
+```
 - Create transaction
 
 - Get transaction by ID
@@ -148,7 +148,7 @@ Returns:
 
 - Highest expense transaction
 
-🔎 Filtering & Pagination
+ Filtering & Pagination
 ```
 GET /transactions?category=Food&type=expense&from=2024-06-01&to=2024-06-30&page=1&page_size=20&sort_by=date&order=desc
 ```
@@ -175,7 +175,7 @@ Supported Query Parameters
 
 Pagination implemented using reusable PaginationParams dependency.
 
-✅ Validation Rules (Pydantic v2)
+ Validation Rules (Pydantic v2)
 ```
 - amount → Must be greater than 0
 
@@ -195,7 +195,7 @@ Pagination implemented using reusable PaginationParams dependency.
 
 - Separate request and response schemas are maintained.
 ```
-⚠ Error Handling
+Error Handling
 ```
 - Centralized exception handling
 
@@ -215,7 +215,7 @@ Example Error Response
   "status_code": 404
 }
 ```
-▶ Running the Application
+ Running the Application
 
 Install dependencies
 ```
@@ -230,7 +230,7 @@ Swagger Documentation
 http://localhost:8000/docs
 ```
 
-🧠 Design Decisions
+ Design Decisions
 ```
 - Category stored as string for optimized filtering and indexing
 
@@ -244,7 +244,7 @@ http://localhost:8000/docs
 
 - Strict schema separation improves API clarity
 ```
-📌 Conclusion
+ Conclusion
 ```
 This project demonstrates:
 
