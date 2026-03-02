@@ -1,4 +1,4 @@
-# 💰 Personal Finance Tracker API
+# Personal Finance Tracker API
 
 A production-ready **Personal Finance Tracker API** built using **FastAPI** and **MongoDB (Motor)**.
 
@@ -96,39 +96,39 @@ Used to log transactional operations when deleting categories.
 ```
 ✅ Transactions
 
-Create transaction
+- Create transaction
 
-Get transaction by ID
+- Get transaction by ID
 
-Update transaction (partial update)
+- Update transaction (partial update)
 
-Delete transaction
+- Delete transaction
 
-Bulk delete (category/date range)
+- Bulk delete (category/date range)
 
-Advanced filtering with pagination
+- Advanced filtering with pagination
 
-Full-text search
+- Full-text search
 
-Monthly summary report (aggregation pipeline)
+- Monthly summary report (aggregation pipeline)
 ```
-✅ Categories
+**Categories**
 ```
-Create category
+- Create category
 
-List categories
+- List categories
 
-Update category
+- Update category
 
-Delete category (MongoDB Transaction)
+- Delete category (MongoDB Transaction)
 
-Deletes category
+- Deletes category
 
-Sets linked transactions to "uncategorized"
+- Sets linked transactions to "uncategorized"
 
-Logs operation in audit_logs
+- Logs operation in audit_logs
 
-Rolls back on failure
+- Rolls back on failure
 ```
 
 📊 Monthly Summary (Aggregation Pipeline)
@@ -137,15 +137,15 @@ GET /transactions/summary?month=2024-06
 ```
 Returns:
 
-Total income
+- Total income
 
-Total expense
+- Total expense
 
-Net balance
+- Net balance
 
-Category-wise expense breakdown with percentage
+- Category-wise expense breakdown with percentage
 
-Highest expense transaction
+- Highest expense transaction
 
 🔎 Filtering & Pagination
 ```
@@ -154,57 +154,57 @@ GET /transactions?category=Food&type=expense&from=2024-06-01&to=2024-06-30&page=
 
 Supported Query Parameters
 
-```category``` → Filter by category
+- ```category``` → Filter by category
 
-```type``` → income / expense
+- ```type``` → income / expense
 
-```from ```→ Start date
+- ```from ```→ Start date
 
-```to ```→ End date
+- ```to ```→ End date
 
-```tags``` → Must contain all given tags
+- ```tags``` → Must contain all given tags
 
-```page``` → Page number (default: 1)
+- ```page``` → Page number (default: 1)
 
-```page_size``` → Max 100 (default: 20)
+- ```page_size``` → Max 100 (default: 20)
 
-```sort_by``` → date or amount
+- ```sort_by``` → date or amount
 
-```order``` → asc / desc
+- ```order``` → asc / desc
 
 Pagination implemented using reusable PaginationParams dependency.
 
 ✅ Validation Rules (Pydantic v2)
 ```
-amount → Must be greater than 0
+- amount → Must be greater than 0
 
-title → 3–100 characters, trimmed
+- title → 3–100 characters, trimmed
 
-description → Maximum 500 characters
+- description → Maximum 500 characters
 
-type → Must be exactly "income" or "expense"
+- type → Must be exactly "income" or "expense"
 
-category → Lowercase, not empty
+- category → Lowercase, not empty
 
-date → Cannot be a future date
+- date → Cannot be a future date
 
-tags → Maximum 10 tags, each max 30 characters
+- tags → Maximum 10 tags, each max 30 characters
 
-page_size → Maximum value 100
+- page_size → Maximum value 100
 
-Separate request and response schemas are maintained.
+- Separate request and response schemas are maintained.
 ```
 ⚠ Error Handling
 ```
-Centralized exception handling
+- Centralized exception handling
 
-Consistent JSON response structure
+- Consistent JSON response structure
 
-Proper HTTP status codes
+- Proper HTTP status codes
 
-Custom validation messages
+- Custom validation messages
 
-MongoDB transaction rollback on failure
+- MongoDB transaction rollback on failure
 ```
 Example Error Response
 ```json
@@ -230,33 +230,33 @@ http://localhost:8000/docs
 
 🧠 Design Decisions
 ```
-Category stored as string for optimized filtering and indexing
+- Category stored as string for optimized filtering and indexing
 
-Programmatic index creation ensures portability
+- Programmatic index creation ensures portability
 
-MongoDB transactions ensure data consistency
+- MongoDB transactions ensure data consistency
 
-Aggregation pipeline used for efficient reporting
+- Aggregation pipeline used for efficient reporting
 
-Reusable pagination dependency avoids code duplication
+- Reusable pagination dependency avoids code duplication
 
-Strict schema separation improves API clarity
+- Strict schema separation improves API clarity
 ```
 📌 Conclusion
 ```
 This project demonstrates:
 
-Advanced FastAPI architecture
+- Advanced FastAPI architecture
 
-MongoDB indexing and aggregation
+- MongoDB indexing and aggregation
 
-Transaction handling with rollback
+- Transaction handling with rollback
 
-Full-text search
+- Full-text search
 
-Clean validation with Pydantic v2
+- Clean validation with Pydantic v2
 
-Production-level error handling
+- Production-level error handling
 ```
 Developed by Nidhi Yadav
 Internship Backend Project – FastAPI & MongoDB
@@ -367,99 +367,3 @@ Internship Backend Project – FastAPI & MongoDB
 
 
 
-<h1>Personal Finance Tracker API</h1>
- 
- Project Overview:-
-
-Personal Finance Tracker is a scalable and modular REST API built using FastAPI and MongoDB to efficiently manage income and expense transactions.
-The system is designed with clean architecture principles, asynchronous database operations, structured validation, and real-world financial tracking features such as filtering, bulk operations, and monthly summaries.
-This project demonstrates backend development best practices including validation, dependency injection, async programming, and aggregation handling.
-
-**Architecture & Design Approach**
----
-The application follows a layered modular architecture:
-
-1)API Layer – Handles routing and HTTP request/response lifecycle.
-
-2)Schema Layer – Data validation using Pydantic models.
-
-3)Core Layer – Configuration and database connection management.
-
-4)Dependency Layer – Reusable dependencies like pagination.
-
-The design ensures:
----
-- Separation of concerns.
-
-- Clean and maintainable code.
-
-- Scalable structure for future enhancements.
-
-**Technical Highlights**
----
-- Asynchronous API implementation using FastAPI
-
-- Async MongoDB integration via Motor
-
-- Structured request validation using Pydantic
-
-- Dependency Injection for database handling
-
-- MongoDB aggregation for financial summary
-
-- Bulk delete operations with date filtering
-
-- Query-based filtering (category & date range)
-
-- Proper HTTP status codes & exception handling
-
-- Environment-based configuration management
-
-**Internal Request Flow**
----
- 1)Client Request: The initial entry point where the user sends data.
-
- 2)FastAPI Router: Receives and directs the request to the appropriate endpoint.
-
- 3)Pydantic Validation: Ensures the incoming data strictly matches the defined schema.
-
- 4)Dependency Injection: Manages and provides required resources, such as database sessions.
-
- 5)Motor (Async MongoDB Driver): Handles the asynchronous connection to the database.
-
- 6)MongoDB Execution: The database performs the requested read or write operation.
-
- 7)Response Serialization: Converts complex Python objects back into a standard format.
-
- 8)Client Receives JSON: The final output is delivered to the user as a JSON payload.
-
-**Core Functionalities**
----
-
-**Category Management**:-
----
-- Create category
-
-- View all categories
-
-- Update category
-
-- Delete category
-
-- Duplicate prevention logic
-
-**Transaction Management**:-
----
-- Add income/expense transactions
-
-- Update transaction details
-
-- Delete single transaction
-
-- Bulk delete by date range
-
-- Filter by category
-
-- Filter by date range
-
-- Monthly financial summary (Aggregation pipeline)
