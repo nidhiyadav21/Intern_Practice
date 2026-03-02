@@ -78,6 +78,7 @@ app/
 3️⃣ audit_logs
 
 Used to log transactional operations when deleting categories.
+---
 
 📌 Indexes (Created Programmatically on Startup)
 
