@@ -8,7 +8,7 @@ The application follows a structured multi-module architecture with proper schem
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Backend Framework:** FastAPI  
 - **Database:** MongoDB  
@@ -20,7 +20,8 @@ The application follows a structured multi-module architecture with proper schem
 
 ---
 
-# 📁 Project Structure
+#  Project Structure
+```
 app/
 │
 ├── main.py
@@ -45,7 +46,7 @@ app/
 │
 └── utils/
 └── exceptions.py
-
+```
 
 ---
 
