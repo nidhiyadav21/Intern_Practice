@@ -214,18 +214,52 @@ Example Error Response
   "status_code": 404
 }
 ```
+▶ Running the Application
+Install dependencies
+```
+pip install -r requirements.txt
+```
+Run server
+```
+uvicorn app.main:app --reload
+```
+Swagger Documentation
+```
+http://localhost:8000/docs
+```
 
+🧠 Design Decisions
+```
+Category stored as string for optimized filtering and indexing
 
+Programmatic index creation ensures portability
 
+MongoDB transactions ensure data consistency
 
+Aggregation pipeline used for efficient reporting
 
+Reusable pagination dependency avoids code duplication
 
+Strict schema separation improves API clarity
+```
+📌 Conclusion
+```
+This project demonstrates:
 
+Advanced FastAPI architecture
 
+MongoDB indexing and aggregation
 
+Transaction handling with rollback
 
+Full-text search
 
+Clean validation with Pydantic v2
 
+Production-level error handling
+```
+Developed by Nidhi Yadav
+Internship Backend Project – FastAPI & MongoDB
 
 
 
