@@ -1,4 +1,4 @@
-# 🚀 Internship Practice Repository
+# Internship Practice Repository
 
 Welcome to my Internship Practice Repository!
 
@@ -6,7 +6,7 @@ This repository serves as a structured log of my daily learning, development tas
 
 ---
 
-## 🎯 Objective
+## Objective
 
 The primary goals of this repository are:
 
@@ -18,11 +18,11 @@ The primary goals of this repository are:
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 Each folder follows a consistent naming convention:
 
-DDMMYYYY_DayName
+DDMMYYYY_
 
 This format keeps all logs chronological and easy to navigate.
 
@@ -39,9 +39,9 @@ Each folder may contain:
 
 ---
 
-## 🛠 Tech Stack & Tools
+## Tech Stack & Tools
 
-### 💻 Programming Languages
+### Programming Languages
 - Python
 - SQL
 
@@ -57,7 +57,7 @@ Each folder may contain:
 ### 🔧 Tools
 - Git & GitHub
 - Postman
-- VS Code
+- Pycharm
 
 ---
 
