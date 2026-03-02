@@ -15,6 +15,7 @@ from sklearn import tree
 #Main Class
 class InsuranceSQLModel:
     def __init__(self,server,database,table_name,test_size=0.3,random_state=42):
+
         self.server = server
         self.database = database
         self.table_name = table_name
@@ -33,6 +34,10 @@ class InsuranceSQLModel:
         self.pipeline = None
 
     def connect_sql(self):
+        """
+                Establish a connection to the local SQL Server using SQLAlchemy.
+                Uses Windows Authentication (Trusted Connection).
+        """
         print("Connecting to SQL Server...")
         self.engine = create_engine("mssql+pyodbc://@localhost/InsuranceDB"
                                "?driver=ODBC+Driver+17+for+SQL+Server"
@@ -40,6 +45,10 @@ class InsuranceSQLModel:
         print("Connected to SQL Server")
 
     def load_data(self):
+        """
+               Execute a SQL query to pull all records from the specified table
+               into a Pandas DataFrame.
+        """
         print("Loading data...")
         query = f"SELECT * FROM {self.table_name}"
         self.df = pd.read_sql(query,self.engine)
@@ -47,6 +56,14 @@ class InsuranceSQLModel:
         print("Data Loaded Successfully")
 
     def preprocess(self):
+        """
+               Perform exploratory data analysis (EDA) and data cleaning.
+               This includes:
+               - Separating target (charges) from features.
+               - Removing duplicate rows.
+               - Splitting data into training and testing sets.
+        """
+
         print("Preprocessing data...")
         self.y = self.df["charges"]
         self.X = self.df.drop("charges",axis=1)
@@ -58,7 +75,7 @@ class InsuranceSQLModel:
         print("\n Checking null values:\n", self.df.isnull().sum())
         print("\n Checking Duplicate values:\n", self.df.duplicated().sum())
         df = self.df.drop_duplicates()
-        print("Duplicate rows:", df.duplicated().sum())
+        print("\nDuplicate rows:", df.duplicated().sum())
 
         print("Preprocessing completed.")
 
@@ -68,14 +85,19 @@ class InsuranceSQLModel:
         print("Data Split completed")
 
     def plot_outliers(self):
+        """
+               Generate boxplots for all numerical columns in the dataset.
+               Helps visualize distribution and identify potential outliers
+               in columns like Age, BMI, and Charges.
+        """
         print("Generating boxplots for outlier detection...")
-            # Select only numeric columns (age, bmi, children, charges)
+        # Select only numeric columns (age, bmi, children, charges)
         numeric_cols = self.df.select_dtypes(include=[np.number]).columns
 
-            # Set up the matplotlib figure
+        # Set up the matplotlib figure
         plt.figure(figsize=(12, 6))
 
-            # Loop through each numeric column and create a subplot
+        # Loop through each numeric column and create a subplot
         for i, col in enumerate(numeric_cols, 1):
             plt.subplot(1, len(numeric_cols), i)
             sns.boxplot(y=self.df[col], color='skyblue')
@@ -85,6 +107,12 @@ class InsuranceSQLModel:
         plt.show()
 
     def build_pipeline(self):
+        """
+               Construct a Scikit-Learn pipeline that automates:
+               1. One-Hot Encoding for categorical string variables.
+               2. Passing through numerical variables.
+               3. Initializing the Random Forest Regressor.
+        """
         print("Building pipeline...")
         categorical_selector = make_column_selector(dtype_include=[object])
         transformer = make_column_transformer((OneHotEncoder(handle_unknown="ignore"),categorical_selector),remainder="passthrough")
@@ -93,11 +121,21 @@ class InsuranceSQLModel:
         print("Pipeline completed")
 
     def train(self):
+        """
+                Fit the entire machine learning pipeline on the training data.
+                This includes applying the column transformations (encoding)
+                and training the Random Forest Regressor.
+        """
         print("Training pipeline...")
         self.pipeline.fit(self.X_train,self.y_train)
         print("Training completed")
 
     def evaluate(self):
+        """
+                Assess model performance by calculating R2 scores for both
+                training and testing sets. Generates a 'Best Fit' scatter plot
+                comparing actual vs. predicted values.
+        """
         print("Evaluating pipeline...")
         y_train_pred = self.pipeline.predict(self.X_train)
         y_test_pred = self.pipeline.predict(self.X_test)
@@ -133,6 +171,11 @@ class InsuranceSQLModel:
         # return y_test_pred
 
     def save_to_existing_table(self):
+        """
+               Clean up the local DataFrame by removing redundant prediction columns,
+               calculating final predictions for the entire dataset, and overwriting
+               the original SQL table with the updated results.
+        """
         print(f"Cleaning columns and updating {self.table_name}...")
 
         # 1. Generate new predictions
@@ -155,6 +198,13 @@ class InsuranceSQLModel:
         print(f"Successfully updated '{self.table_name}'. Extra columns have been removed.")
 
     def plot_individual_tree(self, tree_index=0, max_depth=3):
+        """
+               Extract and visualize a single decision tree from the Random Forest.
+
+               Args:
+                   tree_index (int): The index of the tree to visualize.
+                   max_depth (int): Limit the depth of the plot for better readability.
+        """
         print(f"Visualizing Tree #{tree_index} from the Forest...")
 
         # 1. Get the feature names after OneHotEncoding
@@ -180,6 +230,9 @@ class InsuranceSQLModel:
 
 
 def main():
+    """
+        Step-by-step workflow to run the Insurance Prediction Model.
+    """
     model = InsuranceSQLModel(server="localhost",database="InsuranceDB",table_name="InsuranceTable")
     model.connect_sql()
     model.load_data()
