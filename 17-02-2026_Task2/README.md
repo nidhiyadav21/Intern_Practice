@@ -77,7 +77,7 @@ app/
   "created_at": "datetime"
 }
 
-3️⃣ audit_logs
+3️. audit_logs
 
 Used to log transactional operations when deleting categories.
 
