@@ -8,7 +8,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import make_column_transformer,make_column_selector
 from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score,mean_squared_error
 from sklearn import tree
 
 
@@ -145,6 +145,9 @@ class InsuranceSQLModel:
         print("\n === MODEL PERFORMANCE ===")
         print(f"Training R2 Score: {train_r2:.4f}")
         print(f"Test R2 Score: {test_r2:.4f}")
+
+        mse = mean_squared_error(self.y_test, y_test_pred)
+        print(f"Mean Squared Error: {mse:.4f}")
 
         #Plotting Best fit
         plt.figure(figsize=(10, 6))
