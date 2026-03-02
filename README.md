@@ -39,33 +39,51 @@ Each folder may contain:
 
 ---
 
-## Tech Stack & Tools
+## Technologies, Frameworks & Tools Used
+
+Throughout my internship, I have worked with the following technologies:
 
 ### Programming Languages
 - Python
 - SQL
 
-### ⚙ Frameworks & Libraries
+### Backend Frameworks
 - Flask
 - FastAPI
-- SQLAlchemy
-- PyMongo
+
+### Databases
+- MongoDB
+- SQL Databases
+
+### Machine Learning Algorithms
+- Linear Regression
+- Logistic Regression
+- Decision Tree Classifier
+- Decision Tree Regressor
+- Random Forest
+
+### Web Scraping & Automation
+- BeautifulSoup
+- Selenium
+
+### Libraries & Modules
+- NumPy
+- Pandas
 - Scikit-learn
-- PyODBC
+
+### Version Control & Workflow
+- Git
+- GitHub
 - GitFlow
 
-### 🔧 Tools
-- Git & GitHub
+### Development Tools
 - Postman
-- Pycharm
-
----
-
-## 📌 Commitment
+- VS Code
+## Commitment
 
 This repository represents my dedication to continuous learning, structured documentation, and consistent improvement during my internship.
 
 ---
 
-👩‍💻 Maintained by Nidhi Yadav  
+Maintained by Nidhi Yadav  
 Feel free to explore and reach out regarding any implementation or concept.
