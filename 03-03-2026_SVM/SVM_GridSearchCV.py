@@ -28,18 +28,19 @@ class DiabetesClassifier:
     def load_and_clean_data(self):
         try:
             self.df = pd.read_csv(self.file_path)
+            self.df.drop_duplicates(inplace=True)
             print(f"Data Loaded. Shape: {self.df.shape}")
         except FileNotFoundError:
             print("File not found.")
             exit()
 
     def prepare_data(self,test_size=0.3):
-        self.df.dropna(inplace=True)
+        self.df.dropna(inplace=True) #Removes any rows containing missing values (NaNs) directly from dataset
 
         X = self.df.drop("Outcome",axis=1)
         y = self.df["Outcome"]
 
-        X_train_raw,X_test_raw,self.y_train ,self.y_test = train_test_split(X,y,test_size=test_size,random_state= 42,stratify=y)
+        X_train_raw,X_test_raw,self.y_train ,self.y_test = train_test_split(X,y,test_size=test_size,random_state= 42,stratify=y) #stratify=y ensures both training and testing sets have the same percentage of diabetes cases as the original data.
 
         self.X_train = self.scaler.fit_transform(X_train_raw)
         self.X_test = self.scaler.transform(X_test_raw)
@@ -80,9 +81,6 @@ class DiabetesClassifier:
         plt.xlabel("Predicted label")
         plt.show()
 
-        from sklearn.decomposition import PCA
-        from sklearn.inspection import DecisionBoundaryDisplay
-
     def plot_rbf_boundary(self, C=1.0, gamma=0.1):
         """Visualizes a curvy RBF decision boundary to better capture overlapping data."""
         if self.X_train is None:
@@ -113,7 +111,7 @@ class DiabetesClassifier:
             )
 
         # Plot the actual data points
-        scatter = plt.scatter(X_test_pca[:, 0], X_test_pca[:, 1], c=self.y_test,
+        scatter = plt.scatter(X_test_pca[:, 0], X_test_pca[:, 1], c=self.y_test, #c=self.y_test: Colours each dot based on its true label (e.g., Green for Healthy, Red for Diabetes).
                                 edgecolors='k', cmap='RdYlGn', s=50)
 
         plt.title(f"SVM RBF Boundary (PCA Reduced)\nC={C}, Gamma={gamma}", fontsize=15)
