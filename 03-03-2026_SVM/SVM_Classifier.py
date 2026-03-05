@@ -50,6 +50,8 @@ class HeartDiseaseModel:
         print("\n Checking null values:\n", self.df.isnull().sum())
         print("\n Checking Duplicate values:\n", self.df.duplicated().sum())
         print("After dropping duplicate values:\n", self.df.drop_duplicates(keep='first'))
+        self.df = self.df.drop_duplicates(keep='first')
+        print(f"Duplicates removed. New shape: {self.df.shape}")
         self.y = self.df["target"]
         self.X = self.df.drop(columns="target")
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
@@ -105,15 +107,6 @@ class HeartDiseaseModel:
 
             return y_pred, test_probs
 
-    # def plot_roc_curve(self, test_probs):
-    #     fpr, tpr, _ = roc_curve(self.y_test, test_probs)
-    #     plt.figure(figsize=(6, 4))
-    #     plt.plot(fpr, tpr, label="SVM (RBF Kernel)", color='darkorange')
-    #     plt.plot([0, 1], [0, 1], 'k--')
-    #     plt.title("ROC Curve")
-    #     plt.legend()
-    #     plt.show()
-
     def plot_decision_boundaries(self):
         print("[INFO] Plotting decision boundaries...")
         # Scale and reduce dimensions to 2D for plotting
@@ -139,6 +132,7 @@ class HeartDiseaseModel:
         plt.show()
 
 
+
 def main():
     DATA_PATH = "heart.csv"
 
@@ -159,7 +153,7 @@ def main():
             print("Evaluation failed to return values.")
 
         # CALLING THE PLOTS HERE:
-        #model.plot_roc_curve(test_probs)
+
         model.plot_decision_boundaries()
 
     except FileNotFoundError:
