@@ -179,7 +179,7 @@ class SocialNetworkADSModel:
             print(f"Error: {e}")
 
 def main():
-    DATA_PATH = "Social_Network_Ads (1).csv"
+    DATA_PATH = "Social_Network_Ads.csv"
 
     model = SocialNetworkADSModel(DATA_PATH)
     model.evaluate_model()
