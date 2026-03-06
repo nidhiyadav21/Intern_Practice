@@ -8,7 +8,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
-import pickle
+import pickle  #Used to save your trained model to a file.
 
 
 class SocialNetworkAds:
@@ -45,11 +45,11 @@ class SocialNetworkAds:
         """
         numeric_cols = ['Age', 'EstimatedSalary']
         plt.figure(figsize=(12, 5))
-        for i, col in enumerate(numeric_cols, 1):
-            plt.subplot(1, 2, i)
+        for i, col in enumerate(numeric_cols, 1):  #enumerate gives us both the column name (col) and a counter (i) starting at 1.
+            plt.subplot(1, 2, i)    #Divides the figure into a grid with 1 row and 2 columns. The i tells the code to draw the next plot in the position (either position 1 or 2).
             sns.boxplot(y=self.df[col], color='blue')
             plt.title(f'Outlier Detection: {col}')
-        plt.tight_layout()
+        plt.tight_layout()        #Automatically adjusts the spacing between the two charts so the labels and titles don't overlap.
         plt.show()
 
     def preprocess_data(self):
@@ -111,7 +111,7 @@ class SocialNetworkAds:
         }
 
         # Run Grid Search
-        grid = GridSearchCV(self.pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+        grid = GridSearchCV(self.pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=2)
         grid.fit(self.X_train, self.y_train)
 
         # Store results
@@ -156,7 +156,7 @@ class SocialNetworkAds:
                 Args:
                     filename (str): The name of the file to save the model to.
         """
-        with open(filename, "wb") as f:
+        with open(filename, "wb") as f:  #wb stands for "Write Binary."
             pickle.dump(self.pipeline, f)
         print(f"Model saved to: {filename}")
 
