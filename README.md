@@ -29,6 +29,7 @@ This format keeps all logs chronological and easy to navigate.
 ### Example:
 
 05-02-2026_flask
+
 06-02-2026_fastapi 
 
 Each folder may contain:
