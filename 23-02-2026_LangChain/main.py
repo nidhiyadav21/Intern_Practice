@@ -1,16 +1,18 @@
-from langchain_ollama import ChatOllama
+import os
+from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
 
+
 # Initialize model
-llm = ChatOllama(
-    model="llama3.2:latest",  # or mistral, phi, etc.
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",  # or mistral, phi, etc.
     temperature=0.7,
-    base_url="http://ai:11434",
+    api_key = "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"
 )
 
 # Chat
 response = llm.invoke([
-    HumanMessage(content="Explain transformers in simple terms")
+    HumanMessage(content="Explain LangChain in Simple terms")
 ])
 
 print(response.content)
