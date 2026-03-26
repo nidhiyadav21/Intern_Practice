@@ -31,7 +31,7 @@ USER STORIES:
 - [ ] [Criterion 2: e.g., Error message shows if field is empty]
 - [ ] [Criterion 3: e.g., UI matches the design specs]
 
-### 🔧 Subtasks:
+### Subtasks:
 - [ ] **Backend:** [e.g., Create Database Migration for Table X]
 - [ ] **Frontend:** [e.g., Build the responsive input form]
 - [ ] **Testing:** [e.g., Write unit test for the validation logic]
