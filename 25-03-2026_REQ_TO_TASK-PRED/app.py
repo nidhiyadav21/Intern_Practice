@@ -9,7 +9,7 @@ from prompt import load_prompt
 
 load_dotenv()
 
-# ------------------ API ------------------
+#API
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = os.getenv("GROQ_MODEL")
 
@@ -19,14 +19,14 @@ llm = ChatGroq(
     temperature=0.3
 )
 
-# ------------------ PDF ------------------
+#PDF
 def extract_pdf(file_path):
     loader = PyMuPDFLoader(file_path)
     docs = loader.load()
     return "\n".join([doc.page_content for doc in docs])
 
 
-# ------------------ PROMPTS ------------------
+#PROMPTS
 req_prompt = PromptTemplate.from_template(load_prompt("requirement"))
 us_prompt = PromptTemplate.from_template(load_prompt("user_story"))
 task_prompt = PromptTemplate.from_template(load_prompt("generate_task"))
@@ -36,7 +36,7 @@ user_stories_chain = us_prompt | llm
 tasks_chain = task_prompt | llm
 
 
-# ------------------ TOOLS ------------------
+#TOOLS
 @tool
 def generate_requirements(text: str):
     """Generates a list of requirements from the provided text."""
@@ -57,14 +57,14 @@ def generate_task(user_stories: str,max_chars: int = 1500):
 
 tools = [generate_requirements, generate_user_stories, generate_task]
 
-# ------------------ AGENT ------------------
+#AGENT
 agent = create_agent(
     model=llm,
     tools=tools,
     system_prompt=load_prompt("agent_prompt")
 )
 
-# ------------------ RUN ------------------
+
 if __name__ == "__main__":
     pdf_path = "SRS-BECS-2007.pdf"
 
