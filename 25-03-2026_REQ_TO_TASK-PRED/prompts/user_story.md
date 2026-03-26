@@ -10,11 +10,12 @@ Instructions:
 - Keep it clear and meaningful
 
 Input:
+
 REQUIREMENTS:
+
 {requirements}
 
 Output Format:
-
 # User Stories
 
 - As a user, I want [feature], so that [benefit]
