@@ -8,7 +8,6 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from prompt import load_prompt
 
 load_dotenv()
-
 #API
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = os.getenv("GROQ_MODEL")
