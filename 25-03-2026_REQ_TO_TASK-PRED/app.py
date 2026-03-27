@@ -35,6 +35,7 @@ user_stories_chain = us_prompt | llm
 tasks_chain = task_prompt | llm
 
 
+
 #TOOLS
 @tool
 def generate_requirements(text: str):
