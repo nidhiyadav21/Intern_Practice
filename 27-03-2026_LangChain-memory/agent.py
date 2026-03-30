@@ -24,6 +24,7 @@ def get_agent():
 
 
     # Note: langgraph's create_react_agent is preferred for checkpointers
+
     return create_agent(
         llm,
         tools=[get_user_info],
