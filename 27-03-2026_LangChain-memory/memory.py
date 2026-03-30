@@ -10,6 +10,7 @@ history = MongoDBChatMessageHistory(
     collection_name=COLLECTION_NAME
 )
 
+
 def get_history():
     """
     Returns only the last 4 messages (Short-term memory)
