@@ -25,6 +25,7 @@ def chat(user_input):
 
 
 if __name__ == "__main__":
+
     print("--- Local Llama 3.2 1B Agent (Ollama) Ready ---")
     while True:
         try:
