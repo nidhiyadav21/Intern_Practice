@@ -37,7 +37,6 @@ query = {
         )
     ]
 }
-
 response = agent.invoke(query)
 print(response["messages"][-1].content)
 
