@@ -10,7 +10,6 @@ if __name__ == "__main__":
     #Find any one Document
     # one = collection.find_one({ "Name": "Nidhi" })
     # print(one)
-
     #Find many document
 
     #Cursor 
