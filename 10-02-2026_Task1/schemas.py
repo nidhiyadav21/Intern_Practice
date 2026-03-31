@@ -12,6 +12,7 @@ class EmployeeBase(BaseModel):
 class EmployeeCreate(EmployeeBase):
     pass
 
+
 class EmployeeUpdate(BaseModel):
     name: Optional[str] = None
     department: Optional[str] = None

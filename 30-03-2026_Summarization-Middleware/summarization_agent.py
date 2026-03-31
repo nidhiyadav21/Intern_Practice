@@ -1,9 +1,9 @@
-import os
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.agents.middleware import SummarizationMiddleware
 from langchain_ollama import ChatOllama
 from langgraph.checkpoint.memory import MemorySaver
+from langchain_core.messages import HumanMessage
 
 load_dotenv()
 
@@ -31,13 +31,7 @@ while True:
     if user_input == "exit":
         break
     response = agent.invoke(
-        {
-            "messages": [{"role": "user","content": user_input}]
-        },
-        config={
-            "configurable": {
-                "thread_id": "user_1"
-            }
-        },
+        {"messages": [HumanMessage(content=user_input)]},
+        config={"configurable": { "thread_id": "user_1" }}
     )
     print("AI:",response["messages"][-1].content)

@@ -12,7 +12,6 @@ class Tasks(Base):
     title = Column(String(100))
     status = Column(String(50))
 
-
 Session = sessionmaker(bind=engine)
 session = Session()
 

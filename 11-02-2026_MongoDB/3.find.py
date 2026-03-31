@@ -1,6 +1,5 @@
 import pymongo
 
-
 if __name__ == "__main__":
     print("Welcome to pyMongo")
     client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -11,7 +10,6 @@ if __name__ == "__main__":
     #Find any one Document
     # one = collection.find_one({ "Name": "Nidhi" })
     # print(one)
-
     #Find many document
 
     #Cursor 

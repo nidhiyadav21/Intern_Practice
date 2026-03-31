@@ -1,35 +1,3 @@
-# import pyodbc
-# import sys
-# #from sqlalchemy import create_engine
-#
-# #engine = create_engine("mssql+pyodbc://localhost/harsh?driver=ODBC+Driver+17+for+SQL+Server")
-#
-#
-# #connect to database
-# try:
-#     conn = pyodbc.connect("mssql+pyodbc://localhost/STUDENTS_DB?driver=ODBC+Driver+17+for+SQL+Server")
-#     print("Connected to DB")
-# except Exception as e:
-#     print(str(e))
-#     sys.exit(0)
-#
-# query = """ INSERT INTO student_details (FIRSTNAME, LASTNAME, DOB, STANDARD, SECTION) VALUES [?, ?, ?, ?, ?] """, ['Nidhi', 'Yadav', '2005-06-15', 10, 'A']
-#
-# #execute the query
-# try:
-#     cursor = conn.cursor()
-#     cursor.execute(query)
-#     conn.commit()
-# except Exception as e:
-#     print(str(e))
-#     sys.exit(0)
-#
-#     #close the connection
-# conn.close()
-
-
-
-
 import pyodbc
 import sys
 
@@ -54,7 +22,6 @@ params = [
     ('Nidhi', 'Yadav', 20050615, 10, 'A'),
     ('Bhumika','Chauhan',20050516,11,'B')
     ]
-
 try:
     cursor = conn.cursor()
     # 2. Pass query and params as two separate arguments

@@ -15,7 +15,6 @@
 #
 
 
-
 #Sum
 # def sum_of_two_numbers(a,b):
 #     return a+b
@@ -24,7 +23,6 @@
 #
 # s = sum_of_two_numbers(num1,num2)
 # print(f"The sum of two numbers : {s}")
-
 
 
 #Find Weight
@@ -40,8 +38,6 @@
 # f = find_weight(weight,unit)
 
 #print("Converted weight:",round(f,2))
-
-
 
 #Find ages
 

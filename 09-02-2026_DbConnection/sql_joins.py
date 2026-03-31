@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+
 class Department(Base):
     __tablename__ = 'Departments'
     DeptID = Column(Integer, primary_key=True)

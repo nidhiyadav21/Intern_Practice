@@ -2,10 +2,6 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import crud, schemas, models, database
 
-# # --- ADD THIS LINE HERE ---
-# # This creates the tables in the DB if they don't exist
-# models.Base.metadata.create_all(bind=database.engine)
-# # --------------------------
 app = FastAPI()
 
 @app.get("/employees", response_model=list[schemas.EmployeeResponse])
@@ -19,7 +15,6 @@ def read_employee(id: int, db: Session = Depends(database.get_db)):
         raise HTTPException(status_code=404, detail="Employee not found")
     return employee
 
-
 @app.post("/employees", response_model=schemas.EmployeeResponse)
 def create_employee(employee: schemas.EmployeeCreate, db: Session = Depends(database.get_db)):
     # Error handling for duplicate email
@@ -28,7 +23,6 @@ def create_employee(employee: schemas.EmployeeCreate, db: Session = Depends(data
         raise HTTPException(status_code=409, detail="Email already exists")
     return crud.create_employee(db, employee)
 
-
 # Update an existing employee (PUT)
 @app.put("/employees/{id}", response_model=schemas.EmployeeResponse)
 def update_employee(id: int, updated_data: schemas.EmployeeUpdate, db: Session = Depends(database.get_db)):
@@ -36,7 +30,6 @@ def update_employee(id: int, updated_data: schemas.EmployeeUpdate, db: Session =
     if not employee:
         raise HTTPException(status_code=404, detail="Employee not found")
     return employee
-
 
 # Activate/Deactivate employee (PATCH)
 @app.patch("/employees/{id}/status", response_model=schemas.EmployeeResponse)

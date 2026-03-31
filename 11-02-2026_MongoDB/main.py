@@ -1,7 +1,6 @@
 import pymongo
 from pymongo.errors import ServerSelectionTimeoutError
 
-
 def setup_mongodb():
     client = pymongo.MongoClient("mongodb://localhost:27017/",serverSelectionTimeoutMS=2000)
 

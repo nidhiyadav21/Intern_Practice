@@ -53,6 +53,7 @@ def scrape_all_pages(total_pages):
 
     return all_data
 
+
 def main():
     # total_pages = 4
     # data = scrape_all_pages(total_pages)
