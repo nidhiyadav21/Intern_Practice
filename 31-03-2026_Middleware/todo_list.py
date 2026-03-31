@@ -21,14 +21,12 @@ def print_message(message: str) -> str:
     return "Message printed successfully."
 
 # 3. Create the agent with TodoListMiddleware
-# This middleware helps the agent track its progress on the list
 agent = create_agent(
     model=llm,
     tools=[print_message],
     system_prompt="You are a helpful assistant. Use your tools to complete tasks.",
     middleware=[TodoListMiddleware()],
 )
-
 # 4. Invoke with a multi-step request
 response = agent.invoke(
     input={"messages": [{"role": "user",
