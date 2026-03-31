@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 import models, schemas              #exceptions
 
+
 def get_employees(db: Session):
     return db.query(models.Employee).all()
 
