@@ -7,6 +7,7 @@ DATABASE_URL = (
         "?driver=ODBC+Driver+17+for+SQL+Server"
         "&trusted_connection=yes"
 )
+
 engine = create_engine(DATABASE_URL, echo=False)
 SessionLocal = sessionmaker(autocommit=False, bind=engine)
 
