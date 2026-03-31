@@ -29,6 +29,5 @@ try:
   updated_employee = employees.find_one({"Name": "Bhumika"})
   print(f"\n3. VERIFY: New data for Bhumika: {updated_employee['skills']}")
 
-
 except ServerSelectionTimeoutError:
      print("Connection failed.\n")
