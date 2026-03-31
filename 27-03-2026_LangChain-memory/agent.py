@@ -23,9 +23,7 @@ checkpointer = MongoDBSaver(client, db_name="agent_memory")
 def get_agent():
 
 
-    # Note: langgraph's create_react_agent is preferred for checkpointers
-
-    return create_agent(
+        return create_agent(
         llm,
         tools=[get_user_info],
         checkpointer=checkpointer
