@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 with open("sample.html","r") as f:
     html = f.read()
 
+
 soup = BeautifulSoup(html, "html.parser")
 # print(soup.prettify())
 
