@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 #1. Fetch HTML
 def fetch_html(url):
     headers = {'User-Agent': 'Mozilla/5.0'}
