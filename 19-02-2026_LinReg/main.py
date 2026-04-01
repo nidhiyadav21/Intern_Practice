@@ -123,4 +123,5 @@ results = pd.DataFrame({
     "Actual": y_test.values,
     "Predicted": y_pred
 })
+
 results.head(10)
