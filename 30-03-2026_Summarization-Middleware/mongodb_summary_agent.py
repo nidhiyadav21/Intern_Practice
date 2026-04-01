@@ -50,7 +50,6 @@ def get_old(query):
             return m.content
     return ""
 
-
 #Chat loop
 config = {"configurable": {"thread_id": "thread_1"}}  # Define a Thread ID
 
