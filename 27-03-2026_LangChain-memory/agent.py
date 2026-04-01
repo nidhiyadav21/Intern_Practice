@@ -14,7 +14,6 @@ llm = ChatOllama(
     model="llama3.2:1b",
     temperature=0.3
 )
-
 # 3. Setup MongoDB Connection
 client = MongoClient(os.getenv("MONGO_URI"))
 checkpointer = MongoDBSaver(client, db_name="agent_memory")
