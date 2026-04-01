@@ -29,7 +29,6 @@ def retry_model(request: ModelRequest, handler: Callable[[ModelRequest], ModelRe
             print(f"--- Attempt {attempt + 1} failed. Retrying... ---")
     return None
 
-
 #SETUP AGENT
 llm = ChatOllama(model="llama3.2:1b")
 
