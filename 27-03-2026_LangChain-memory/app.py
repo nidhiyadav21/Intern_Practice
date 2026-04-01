@@ -3,7 +3,6 @@ from memory import save_message
 
 agent = get_agent()
 
-
 def chat(user_input):
 
     config = {"configurable": {"thread_id": "user_session_1"}}
