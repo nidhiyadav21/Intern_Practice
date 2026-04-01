@@ -67,7 +67,6 @@ print(classification_report(y_test,y_pred))
 
 #Feature importance
 importance = model.feature_importances_
-
 feature_imp = pd.Series(importance,index=X.columns)
 feature_imp.sort_values().plot(kind='barh')
 plt.title("Feature Importance")
