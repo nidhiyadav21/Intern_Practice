@@ -28,7 +28,6 @@ agent = create_agent(
 )
 
 history = []
-
 print("--- Chat Started (Limit: 6 messages total) ---")
 while True:
     user_input = input("You: ")
