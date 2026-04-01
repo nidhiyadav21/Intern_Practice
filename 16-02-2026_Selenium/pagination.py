@@ -12,7 +12,6 @@ HEADERS = {
 DELAY_BETWEEN_PAGES = 2.0
 CSV_FILENAME = "nhl_teams_all.csv"
 
-
 def get_teams_from_page(page_num: int) -> list[dict]:
     """Fetch and parse one page of teams"""
     url = f"{BASE_URL}?page_num={page_num}"

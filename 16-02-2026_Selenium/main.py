@@ -34,12 +34,6 @@ for page in range(0,4):
 
         all_data.append(data)
 
-        #Click next page if not last
-    # if page < 4:
-    #     next_button_css = f'a[aria-label="Page {page+1}"]'
-    #     next_button = driver.find_element(By.CSS_SELECTOR,f'a[aria-label="Page {page+1}"]')
-    #     next_button.click()
-    #     time.sleep(2)
 
     # Click next page if not last
     if page < 4:

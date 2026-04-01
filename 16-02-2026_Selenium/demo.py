@@ -92,7 +92,6 @@ def display_teams(teams):
         print(f"\n... showing first {MAX_DISPLAY} of {len(teams)} teams")
 
 
-# ────────────────────────────────────────────────
 if __name__ == "__main__":
     start_time = time.time()
 

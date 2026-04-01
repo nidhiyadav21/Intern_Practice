@@ -5,7 +5,7 @@ from langchain_core.tools import tool
 from langchain_groq import ChatGroq
 from tavily import TavilyClient
 
-# ------------------ LOAD ENV ------------------
+#LOAD ENV
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -14,12 +14,12 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
 
 
-# ------------------ TAVILY CLIENT ------------------
+#TAVILY CLIENT
 tavily_client = TavilyClient(api_key=TAVILY_API_KEY)
 
 
 
-# ------------------ TOOL ------------------
+#TOOL
 @tool("SearchEngine", description="Search queries on the web")
 def internet_search(query: str):
     response = tavily_client.search(query=query)
@@ -32,7 +32,7 @@ def internet_search(query: str):
 
 
 
-# ------------------ LLM ------------------
+#LLM
 llm = ChatGroq(
     api_key=GROQ_API_KEY,
     model=GROQ_MODEL,
@@ -44,7 +44,7 @@ model = llm.bind_tools([internet_search])
 
 
 
-# ------------------ CHAT FUNCTION ------------------
+#CHAT FUNCTION
 def chatbot():
     print("Tool-based Chatbot (type 'exit' to stop)\n")
 

@@ -1,3 +1,4 @@
+import os
 from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
 from langchain.agents.middleware import TodoListMiddleware
@@ -7,9 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # 1. Initialize the Ollama model
-
+OLLAMA_MODEL = os.getenv("LLAMA_MODEL")
 llm = ChatOllama(
-    model="llama3.2:1b",
+    model=OLLAMA_MODEL,
     temperature=0,
 )
 

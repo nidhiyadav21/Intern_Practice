@@ -89,7 +89,6 @@ plt.xlabel("Predicted Value")
 plt.show()
 
 
-
 #Classification Report
 print(classification_report(y_test,y_pred))
 

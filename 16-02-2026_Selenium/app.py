@@ -9,10 +9,7 @@ import time
 import csv
 from datetime import datetime
 
-# ────────────────────────────────────────────────
 # CONFIGURATION
-# ────────────────────────────────────────────────
-
 BASE_URL = "https://www.scrapethissite.com/pages/forms/"
 CSV_FILENAME = "nhl_teams_selenium_all.csv"
 
@@ -20,10 +17,7 @@ HEADLESS = True  # allows to switch between Debug mode(we see the browser)(False
 PAGE_DELAY = 1.8  # polite delay between pages
 
 
-# ────────────────────────────────────────────────
 # SELENIUM SETUP
-# ────────────────────────────────────────────────
-
 def init_driver():
     chrome_options = Options()
     if HEADLESS:
@@ -40,10 +34,7 @@ def init_driver():
     return driver
 
 
-# ────────────────────────────────────────────────
 # SCRAPING FUNCTIONS
-# ────────────────────────────────────────────────
-
 def scrape_page(driver, wait: WebDriverWait, page_num: int) -> list[dict]:
     url = f"{BASE_URL}?page_num={page_num}"
     print(f"Loading: {url}")
@@ -122,7 +113,7 @@ def save_to_csv(teams: list[dict]):
     print(f"Saved {len(teams)} teams to {CSV_FILENAME}")
 
 
-# ────────────────────────────────────────────────
+
 if __name__ == "__main__":
     print("=== Selenium Demo - NHL Teams (URL Pagination) ===")
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
