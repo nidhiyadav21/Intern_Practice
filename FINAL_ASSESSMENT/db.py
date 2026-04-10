@@ -12,6 +12,7 @@ collection = db["messages"]
 BASE_URL = os.getenv("BASE_URL")
 llm = ChatOllama(model="mistral-nemo",base_url=BASE_URL)
 
+
 memory = MongoDBSaver(client,collection="messages")
 
 
