@@ -47,5 +47,6 @@ def chat():
         print("AI:", response["messages"][-1].content)
 
 
+
 if __name__ == "__main__":
     chat()
