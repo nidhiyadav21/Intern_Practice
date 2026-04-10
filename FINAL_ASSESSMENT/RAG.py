@@ -27,6 +27,7 @@ def get_retriever():
     embeddings = OllamaEmbeddings(model= "nomic-embed-text", base_url="http://172.16.1.224:11434")
 
     vector_store = InMemoryVectorStore.from_documents(chunks, embeddings)
+
     return vector_store.as_retriever()
 
 
