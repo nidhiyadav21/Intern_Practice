@@ -9,6 +9,7 @@ from langchain_core.tools import tool
 load_dotenv()
 BASE_URL = os.getenv("BASE_URL")
 
+
 @tool
 def get_retriever():
     """ Loaded Documents and splitting into chunks and stored in vectorDb"""
