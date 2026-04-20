@@ -14,7 +14,6 @@ client = MongoClient("mongodb://localhost:27017/")
 # collection = db["chatbot_history"]
 
 
-
 memory = MongoDBSaver(client,db_name="chatbot_checkpoints")
 
 llm = ChatOllama(model="mistral-nemo",base_url=BASE_URL)
