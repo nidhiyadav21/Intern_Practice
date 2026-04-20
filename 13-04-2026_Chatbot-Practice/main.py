@@ -30,6 +30,7 @@ def chat():
                       "Always use the 'retrieve_context' tool to verify facts about PDF chunking"
                       "or project implementation before answering from your own memory."
         )
+
     while True:
         query = input("You:")
         if query.lower() == "exit":
