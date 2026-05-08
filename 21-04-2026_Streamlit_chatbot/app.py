@@ -9,6 +9,7 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
 from Rag import get_retriever
 
+
 def create_qa_chain():
     retriever = get_retriever()
     llm = OllamaLLM(model="mistral-nemo", base_url=BASE_URL)
