@@ -28,9 +28,14 @@ This format keeps all logs chronological and easy to navigate.
 
 ### Example:
 
+<<<<<<< HEAD
 05-02-2026_flask
 
 06-02-2026_fastapi 
+=======
+05-02-2026_flask/  
+06-02-2026_fastapi/  
+>>>>>>> f98c7022af07aaaf832a27d84e34bb55f1022336
 
 Each folder may contain:
 - Source code files
@@ -85,5 +90,11 @@ Throughout my internship, I have worked with the following technologies:
 This repository represents my dedication to continuous learning, structured documentation, and consistent improvement during my internship.
 
 ---
+<<<<<<< HEAD
 Maintained by Nidhi Yadav  
 This repository reflects my commitment to learning, discipline, and professional growth.
+=======
+
+Maintained by Nidhi Yadav  
+Feel free to explore and reach out regarding any implementation or concept.
+>>>>>>> f98c7022af07aaaf832a27d84e34bb55f1022336
