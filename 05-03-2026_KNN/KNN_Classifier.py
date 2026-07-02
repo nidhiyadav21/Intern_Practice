@@ -21,6 +21,7 @@ class SocialNetworkAds:
                 random_state (int): Controls the shuffling applied to the data before splitting.
                 neighbors (int): Default number of neighbors for the KNN model.
     """
+
     def __init__(self, file_path, test_size=0.3, random_state=42, neighbors=10):
         self.file_path = file_path
         self.test_size = test_size
